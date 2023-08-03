@@ -17,7 +17,7 @@ Package all of the files into a tar file with a password protection.
 docker run --rm \
   -v /path/to/bitwarden:/vaultwarden/data \
   -v /path/to/backup:/vaultwarden/backup \
-  adoom/vaultwarden-tools:latest \
+  adoom2018/vaultwarden-tools:latest \
   -t backup -p backup-passwd
 ```
 
@@ -31,10 +31,10 @@ You need to explicitly specify the **data folder of Bitwarden** by replacing `/p
 ### 2. Auto Backup
 
 ```shell
-docker run --rm \
+docker run --rm -d --name vaultwarden-tools \
   -v /path/to/bitwarden:/vaultwarden/data \
   -v /path/to/backup:/vaultwarden/backup \
-  adoom/vaultwarden-tools:latest \
+  adoom2018/vaultwarden-tools:latest \
   -t auto -p backup-passwd -c "5 1 * * *" -k 10
 ```
 
@@ -55,7 +55,7 @@ You need to explicitly specify the **data folder of Bitwarden** by replacing `/p
 docker run --rm \
   -v /path/to/bitwarden:/vaultwarden/data \ 
   -v /path/to/backup:/vaultwarden/backup \
-  adoom/vaultwarden-tools:latest \
+  adoom2018/vaultwarden-tools:latest \
   -t restore -f backup-package-name.tar.gz -p backup-passwd
 ```
 
