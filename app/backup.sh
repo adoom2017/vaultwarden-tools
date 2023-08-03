@@ -61,12 +61,12 @@ cp -rf ${DATA_PATH}/config.json ${BACKUP_PATH}/config.json
 cp -rf ${DATA_PATH}/rsa_key* ${BACKUP_PATH}/
 
 #加密打包
-tar czvf - -C ${BACKUP_PATH} . | openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 1000000 -salt -pass pass:${PASSWD} -out ${BACKUP_FILENAME}
+tar czvf - -C ${BACKUP_PATH} . | openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 1000000 -salt -pass pass:${PASSWD} -out ${BACKUP_FILENAME} > /dev/null 2>&1
 check_result "Failed package data files."
 
 #删除临时备份路径
 rm -rf ${BACKUP_PATH}
 
 #删除备份过期备份文件
-clear_history ${BACKUP_PATH} ${KEEP_DAYS}
+clear_history ${DEST} ${KEEP_DAYS}
 
