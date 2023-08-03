@@ -15,7 +15,7 @@ function clear_history() {
 }
 
 #获取参数
-while getopts ":s:d:p:" opt
+while getopts ":s:d:p:k:" opt
 do
   case $opt in
     s)
