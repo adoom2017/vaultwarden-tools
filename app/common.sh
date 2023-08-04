@@ -3,11 +3,11 @@
 # Color message print
 function color() {
     case $1 in
-        red)     echo -e "\033[31m$2\033[0m" ;;
-        green)   echo -e "\033[32m$2\033[0m" ;;
-        yellow)  echo -e "\033[33m$2\033[0m" ;;
-        blue)    echo -e "\033[34m$2\033[0m" ;;
-        none)    echo "$2" ;;
+        red)     echo -e "\033[31m$(date "+%Y/%m/%d %H:%M:%S") $2\033[0m" ;;
+        green)   echo -e "\033[32m$(date "+%Y/%m/%d %H:%M:%S") $2\033[0m" ;;
+        yellow)  echo -e "\033[33m$(date "+%Y/%m/%d %H:%M:%S") $2\033[0m" ;;
+        blue)    echo -e "\033[34m$(date "+%Y/%m/%d %H:%M:%S") $2\033[0m" ;;
+        none)    echo "$(date "+%Y/%m/%d %H:%M:%S") $2" ;;
     esac
 }
 
