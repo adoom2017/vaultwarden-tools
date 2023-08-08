@@ -23,4 +23,6 @@ COPY app/*.sh /app/
 
 RUN chmod +x /app/*.sh
 
+CMD ["-t", "backup", "-p", "backup-passwd"]
+
 ENTRYPOINT ["/app/entrypoint.sh"]

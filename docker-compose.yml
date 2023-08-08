@@ -1,0 +1,10 @@
+version: "3"
+# 服务 里面包含了多个容器
+services:
+  tools:
+    container_name: "vaultwarden-tools"
+    image: adoom2018/vaultwarden-tools:latest
+    volumes:
+      - /mnt/user/appdata/bitwarden:/vaultwarden/data
+      - /mnt/user/download/backup:/vaultwarden/backup
+    command: -t auto -p backup-passwd
