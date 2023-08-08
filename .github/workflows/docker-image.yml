@@ -2,12 +2,8 @@ name: Docker Image Build
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - "**.md"
     tags:
-      - "v*.*.*"
+      - "v*.*"
 
 jobs:
   build:
