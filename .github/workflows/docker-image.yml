@@ -33,14 +33,15 @@ jobs:
         id: prepare
         run: |
           if [[ $GITHUB_REF == refs/tags/* ]]; then
-            echo ::set-output name=version::${GITHUB_REF#refs/tags/}
-            echo ::set-output name=ref::${GITHUB_REF#refs/tags/}
+            echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+            echo "ref=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           else
-            echo ::set-output name=version::snapshot
-            echo ::set-output name=ref::${{ github.sha }}
+            echo "version=snapshot" >> $GITHUB_OUTPUT
+            echo "ref=${{ github.sha }}" >> $GITHUB_OUTPUT
           fi
-          echo ::set-output name=docker_platforms::linux/amd64
-          echo ::set-output name=docker_image::${{ secrets.DOCKER_USERNAME }}/vaultwarden-tools
+          echo $GITHUB_REF
+          echo "docker_platforms=linux/amd64" >> $GITHUB_OUTPUT
+          echo "docker_image=${{ secrets.DOCKER_USERNAME }}/vaultwarden-tools" >> $GITHUB_OUTPUT
 
       - name: Build and push docker image
         run: |
